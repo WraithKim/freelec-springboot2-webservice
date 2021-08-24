@@ -28,11 +28,12 @@ public class PostsRepositoryTest {
     public void testSaveAndLoadPosts() {
         String title = "테스트 게시글";
         String content = "테스트 본문";
+        String author = "jojoldu@gmail.com";
 
         // given
         postsRepository.save(Posts.builder().title(title)
                                             .content(content)
-                                            .author("jojoldu@gmail.com")
+                                            .author(author)
                                             .build());
 
         // when
@@ -42,6 +43,7 @@ public class PostsRepositoryTest {
         Posts posts = postsList.get(0);
         assertThat(posts.getTitle()).isEqualTo(title);
         assertThat(posts.getContent()).isEqualTo(content);
+        assertThat(posts.getAuthor()).isEqualTo(author);
     }
 
     @Test
